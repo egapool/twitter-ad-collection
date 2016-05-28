@@ -1,0 +1,2 @@
+# twitter-ad-collection
+twitterでプロモーションツイートを出しているアカウントを収集する
