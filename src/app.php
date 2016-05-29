@@ -5,7 +5,7 @@ require __DIR__ . '/vendor/autoload.php';
 require __DIR__."/config.php";
 
 spl_autoload_register(function ($classname) {
-    require ("./" . $classname . ".php");
+    require (__DIR__."/" . $classname . ".php");
 });
 
 use Monolog\Logger;
@@ -13,7 +13,7 @@ use Monolog\Handler\StreamHandler;
 
 $log = new Logger('my_log');
 $logfile = (new DateTime())->format('Ymd');
-$log->pushHandler(new StreamHandler("logs/{$logfile}.log", Logger::INFO));
+$log->pushHandler(new StreamHandler(__DIR__."/logs/{$logfile}.log", Logger::INFO));
 
 $log->info('Foo',['hoge'=>2]);
 $log->error('Bar');
@@ -23,7 +23,7 @@ foreach ( $users as $user ) {
 
 	$url = "https://twitter.com/login";
 
-	$fp = fopen("tmp/tmp", "w");
+	$fp = fopen(__DIR__."/tmp/tmp", "w");
 
 	$ch = curl_init($url);
 	curl_setopt_array($ch, [
@@ -31,7 +31,7 @@ foreach ( $users as $user ) {
 	    CURLOPT_FOLLOWLOCATION 	=> true,
 	    CURLOPT_SSL_VERIFYPEER 	=> false,
 	    CURLOPT_SSL_VERIFYHOST 	=> false,
-	    CURLOPT_COOKIEJAR      	=> 'tmp/cookie',
+	    CURLOPT_COOKIEJAR      	=> __DIR__.'/tmp/cookie',
 	]);
 	curl_setopt($ch, CURLOPT_WRITEHEADER, $fp);
 	$html = curl_exec($ch);
@@ -56,8 +56,8 @@ foreach ( $users as $user ) {
 	    CURLOPT_RETURNTRANSFER 	=> true,
 	    CURLOPT_FOLLOWLOCATION 	=> true,
 	    CURLOPT_SSL_VERIFYPEER 	=> false,
-	    CURLOPT_COOKIEJAR      	=> 'tmp/cookie',
-	    CURLOPT_COOKIEFILE 		=> "tmp/tmp",
+	    CURLOPT_COOKIEJAR      	=> __DIR__.'/tmp/cookie',
+	    CURLOPT_COOKIEFILE 		=> __DIR__."/tmp/tmp",
 		CURLOPT_POST 			=> TRUE,
 		CURLOPT_HTTPHEADER		=> [
 			"Content-type: application/x-www-form-urlencoded",
