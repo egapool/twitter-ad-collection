@@ -1,0 +1,7 @@
+src/config.php
+src/vendor/*
+src/tmp/*
+src/logs/*
+!.gitkeep
+capistrano
+capistrano.zip
