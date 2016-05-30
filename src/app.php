@@ -77,6 +77,7 @@ foreach ( $users as $user ) {
 
 	$promotes = [];
 	foreach ( $xpath->query('//div[@data-promoted="true"]') as $pr){
+		$tw['user_id'] = $xpath->evaluate('string(@data-user-id)', $pr);
 		$tw['screen_name'] = $xpath->evaluate('string(@data-screen-name)', $pr);
 		$tw['name'] 	   = $xpath->evaluate('string(@data-name)', $pr);
 		$icon_url 		   = $xpath->evaluate('string(.//div[@class="content"]/div/a/img/@src)', $pr);
@@ -89,7 +90,7 @@ foreach ( $users as $user ) {
 
 	$pt = new PromoteTweet($config['db']['host'],$config['db']['dbname'],$config['db']['user'],$config['db']['pass']);
 	foreach ( $promotes as $pr ) {
-		$res = $pt->registerAccount($pr['screen_name'],$pr['name'], $pr['status'], $pr['icon']);
+		$res = $pt->registerAccount($pr['user_id'], $pr['screen_name'],$pr['name'], $pr['status'], $pr['icon']);
 
 		if ( $res ) {
 			$log->info('new register!',['screen_name'=>$pr['screen_name'],'status'=>$pr['status']]);

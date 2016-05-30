@@ -21,13 +21,14 @@ Class PromoteTweet
 	 * insert into db promoted account.
 	 *
 	 */
-	public function registerAccount($screen_name,$name, $status, $icon)
+	public function registerAccount($user_id, $screen_name,$name, $status, $icon)
 	{
 		$havingAccounts = $this->fetchPromotedAccount();
 
 		if ( !isset($havingAccounts[$screen_name]) ) {
-			$sql = "INSERT INTO `ad_accounts` (screen_name,name,icon,ad_status,created_at,updated_at) VALUES (:screen_name,:name,:icon,:status,:now,:now);";
+			$sql = "INSERT INTO `ad_accounts` (user_id, screen_name,name,icon,ad_status,created_at,updated_at) VALUES (:user_id, :screen_name,:name,:icon,:status,:now,:now);";
 			$sth = $this->dbh->prepare($sql);
+			$sth->bindParam(':user_id', $screen_name, PDO::PARAM_STR);
 			$sth->bindParam(':screen_name', $screen_name, PDO::PARAM_STR);
 			$sth->bindParam(':name', $name, PDO::PARAM_STR);
 			$sth->bindParam(':status', $status, PDO::PARAM_STR);
