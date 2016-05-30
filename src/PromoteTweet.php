@@ -28,12 +28,12 @@ Class PromoteTweet
 		if ( !isset($havingAccounts[$screen_name]) ) {
 			$sql = "INSERT INTO `ad_accounts` (user_id, screen_name,name,icon,ad_status,created_at,updated_at) VALUES (:user_id, :screen_name,:name,:icon,:status,:now,:now);";
 			$sth = $this->dbh->prepare($sql);
-			$sth->bindParam(':user_id', $screen_name, PDO::PARAM_STR);
+			$sth->bindParam(':user_id', 	$user_id, PDO::PARAM_STR);
 			$sth->bindParam(':screen_name', $screen_name, PDO::PARAM_STR);
-			$sth->bindParam(':name', $name, PDO::PARAM_STR);
-			$sth->bindParam(':status', $status, PDO::PARAM_STR);
-			$sth->bindParam(':icon', $icon, PDO::PARAM_STR);
-			$sth->bindValue(':now', time(), PDO::PARAM_INT);
+			$sth->bindParam(':name', 		$name, PDO::PARAM_STR);
+			$sth->bindParam(':status', 		$status, PDO::PARAM_STR);
+			$sth->bindParam(':icon', 		$icon, PDO::PARAM_STR);
+			$sth->bindValue(':now', 		time(), PDO::PARAM_INT);
 			$sth->execute();
 			return true;
 		}

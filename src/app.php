@@ -77,7 +77,7 @@ foreach ( $users as $user ) {
 
 	$promotes = [];
 	foreach ( $xpath->query('//div[@data-promoted="true"]') as $pr){
-		$tw['user_id'] = $xpath->evaluate('string(@data-user-id)', $pr);
+		$tw['user_id'] 	   = $xpath->evaluate('string(@data-user-id)', $pr);
 		$tw['screen_name'] = $xpath->evaluate('string(@data-screen-name)', $pr);
 		$tw['name'] 	   = $xpath->evaluate('string(@data-name)', $pr);
 		$icon_url 		   = $xpath->evaluate('string(.//div[@class="content"]/div/a/img/@src)', $pr);
