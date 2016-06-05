@@ -90,9 +90,9 @@ foreach ( $users as $user ) {
 		$res = $pt->registerAccount($pr['user_id'], $pr['screen_name'],$pr['name'], $pr['status'], $pr['icon']);
 
 		if ( $res ) {
-			$log->info('new register!',['screen_name'=>$pr['screen_name'],'status'=>$pr['status']]);
+			$log->info('new register!',['user'=>$user['username'],'screen_name'=>$pr['screen_name'],'status'=>$pr['status']]);
 		} else {
-			$log->info('still having..',['screen_name'=>$pr['screen_name'],'status'=>$pr['status']]);
+			$log->info('still having..',['user'=>$user['username'],'screen_name'=>$pr['screen_name'],'status'=>$pr['status']]);
 		}
 	}
 
