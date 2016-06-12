@@ -15,6 +15,8 @@ $log = new Logger('my_log');
 $logfile = (new DateTime())->format('Ymd');
 $log->pushHandler(new StreamHandler(__DIR__."/logs/{$logfile}.log", Logger::INFO));
 
+$log->info('start');
+
 $users = $config['users'];
 foreach ( $users as $user ) {
 
