@@ -33,8 +33,8 @@ foreach ( $users as $user ) {
 	    CURLOPT_COOKIEJAR      	=> __DIR__.'/tmp/cookie',
 	    CURLOPT_HTTPHEADER		=> [
 			"upgrade-insecure-requests: 1",
-			"user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13C75 Twitter for iPhone"
-			// "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+			// "user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13C75 Twitter for iPhone"
+			"user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
 		],
 	]);
 	curl_setopt($ch, CURLOPT_WRITEHEADER, $fp);
@@ -68,8 +68,8 @@ foreach ( $users as $user ) {
 			"origin: https://twitter.com",
 			"referer: https://twitter.com/login",
 			"upgrade-insecure-requests: 1",
-			"user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13C75 Twitter for iPhone"
-			// "user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
+			// "user-agent: Mozilla/5.0 (iPhone; CPU iPhone OS 9_2 like Mac OS X) AppleWebKit/601.1.46 (KHTML, like Gecko) Mobile/13C75 Twitter for iPhone"
+			"user-agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36"
 		],
 	]);
 	curl_setopt($ch, CURLOPT_POSTFIELDS, $sPost);
